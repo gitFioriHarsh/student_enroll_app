@@ -47,5 +47,4 @@ entity Trainers : cuid {
 entity Status {
     key code : String;
         desc : String;
-        statusmode: String;
 }
