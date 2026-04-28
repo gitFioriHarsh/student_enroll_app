@@ -5,13 +5,15 @@
     "@sap/cds": "^9"
   },
   "devDependencies": {
-    "@cap-js/sqlite": "^2"
+    "@cap-js/sqlite": "^2",
+    "cds-plugin-ui5": "^0.13.0"
   },
   "scripts": {
-    "start": "cds-serve"
+    "start": "cds-serve",
+    "watch-courses_app": "cds watch --open com.student.app.coursesapp/index.html?sap-ui-xx-viewCache=false --livereload false"
   },
   "private": true,
-   "cds": {
+  "cds": {
     "requires": {
       "db": {
         "kind": "sqlite",
@@ -20,5 +22,11 @@
         }
       }
     }
-  }
+  },
+  "workspaces": [
+    "app/*"
+  ],
+  "sapux": [
+    "app/courses_app"
+  ]
 }

@@ -1,0 +1,51 @@
+
+### Get Method for reading the data of courses
+GET http://localhost:4004/odata/v4/student-enrollment-api/Courses
+
+### POST Method for creating the data for courses
+POST  http://localhost:4004/odata/v4/student-enrollment-api/Courses
+Content-Type: application/json
+
+{
+    "Coursename"        : "SAP UI5",
+    "duration"          : 10,
+    "fees"              : 8000.00,
+    "trainer_ID"        : "a25bd9e3-2a8a-41a4-8ee7-c74a614735cb"
+}
+
+### Update course data
+PATCH http://localhost:4004/odata/v4/student-enrollment-api/Courses('4562b672-c21f-4056-96e7-27b713c64d0b')
+Content-Type: application/json
+
+{
+    "duration": 50
+}
+
+### Delete course data
+DELETE http://localhost:4004/odata/v4/student-enrollment-api/Courses('eec5dec0-133a-4c1f-ba8b-2dabc943029a')
+Content-Type: application/json
+
+### Deep create 
+POST http://localhost:4004/odata/v4/student-enrollment-api/Courses
+Content-Type: application/json
+
+{
+    "Coursename"        : "SAP Fiori 4",
+    "duration"          : 36,
+    "fees"              : 13000.00,
+    "trainer_ID"        : "ad507608-9614-4ab4-a1f2-94d9be036f1f",
+    "Enrollments": [
+        {
+        "feesPaid"      : 15000,
+        "enrolledDate"  : "2026-04-28",
+        "student_ID"    : "46843f24-a1cc-4d2a-a0bb-079231db7674",
+        "status_code"   : "01"
+        },
+       {
+        "feesPaid"      : 5000,
+        "enrolledDate"  : "2026-04-27",
+        "student_ID"    : "d5636846-bca7-445a-9e03-6a7a12be332d",
+        "status_code"   : "02"
+       }
+    ]
+}
