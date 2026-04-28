@@ -9,7 +9,7 @@ type amountType : Decimal(10, 2);
 
 entity Students : cuid {
     //key studentId     : UUID;
-    name          : String(50);
+    Studentname          : String(50);
     emailId       : String(50);
     address       : String;
     city          : String;
@@ -21,12 +21,12 @@ entity Students : cuid {
 
 entity Courses : cuid, managed {
     //courseId        : UUID;
-    name        : String;
+    Coursename        : String;
     duration    : Integer;
     fees        : amountType;
     trainer     : Association to Trainers;
-    enrollments : Composition of many Enrollments
-                      on enrollments.course = $self;
+    Enrollments : Composition of many Enrollments
+                      on Enrollments.course = $self;
 }
 
 entity Enrollments : cuid, managed {
@@ -40,7 +40,7 @@ entity Enrollments : cuid, managed {
 
 entity Trainers : cuid {
     //trainerId : UUID;
-    name      : String;
+    trainername      : String;
     expertise : String;
 }
 
