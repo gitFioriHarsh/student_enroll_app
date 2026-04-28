@@ -7,10 +7,10 @@ POST  http://localhost:4004/odata/v4/student-enrollment-api/Courses
 Content-Type: application/json
 
 {
-    "Coursename"        : "SAP UI5",
-    "duration"          : 10,
-    "fees"              : 8000.00,
-    "trainer_ID"        : "a25bd9e3-2a8a-41a4-8ee7-c74a614735cb"
+    "Coursename"        : "SAP BTP",
+    "duration"          : 20,
+    "fees"              : 10000.00,
+    "trainer_ID"        : "b65ef2d1-3a1e-4fb1-8d85-6d89be47a7bb"
 }
 
 ### Update course data
