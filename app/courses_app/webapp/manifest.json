@@ -113,10 +113,17 @@
               "controlConfiguration": {
                 "@com.sap.vocabularies.UI.v1.LineItem": {
                   "tableSettings": {
-                    "type": "ResponsiveTable"
+                    "type": "ResponsiveTable",
+                    "enableExport": true,
+                    "quickVariantSelection": {
+                      "showCounts": true,
+                      "hideTableTitle": true
+                    },
+                    "personalization": true
                   }
                 }
-              }
+              },
+              "initialLoad": "Enabled"
             }
           }
         },
@@ -127,7 +134,8 @@
           "options": {
             "settings": {
               "editableHeaderContent": false,
-              "contextPath": "/Courses"
+              "contextPath": "/Courses",
+              "sectionLayout": "Tabs"
             }
           }
         }
