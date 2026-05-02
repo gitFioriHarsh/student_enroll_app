@@ -135,7 +135,8 @@
             "settings": {
               "editableHeaderContent": false,
               "contextPath": "/Courses",
-              "sectionLayout": "Tabs"
+              "sectionLayout": "Tabs",
+              "enableLazyLoading": true
             }
           }
         }
