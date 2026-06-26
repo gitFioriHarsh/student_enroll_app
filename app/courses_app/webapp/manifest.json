@@ -1,0 +1,179 @@
+{
+  "_version": "1.85.0",
+  "sap.app": {
+    "id": "com.student.app.coursesapp",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "applicationVersion": {
+      "version": "0.0.1"
+    },
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "resources": "resources.json",
+    "sourceTemplate": {
+      "id": "@sap/generator-fiori:lrop",
+      "version": "1.27.0",
+      "toolsId": "bfa05031-7549-48eb-a456-272da5f2406c"
+    },
+    "dataSources": {
+      "mainService": {
+        "uri": "/odata/v4/student-enrollment-api/",
+        "type": "OData",
+        "settings": {
+          "annotations": [],
+          "odataVersion": "4.0"
+        }
+      }
+    }
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "icons": {
+      "icon": "",
+      "favIcon": "",
+      "phone": "",
+      "phone@2": "",
+      "tablet": "",
+      "tablet@2": ""
+    },
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
+  "sap.ui5": {
+    "flexEnabled": true,
+    "dependencies": {
+      "minUI5Version": "1.149.0",
+      "libs": {
+        "sap.m": {},
+        "sap.ui.core": {},
+        "sap.fe.templates": {}
+      }
+    },
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
+    },
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "com.student.app.coursesapp.i18n.i18n"
+        }
+      },
+      "": {
+        "dataSource": "mainService",
+        "preload": true,
+        "settings": {
+          "operationMode": "Server",
+          "autoExpandSelect": true,
+          "earlyRequests": true
+        }
+      },
+      "@i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "uri": "i18n/i18n.properties"
+      }
+    },
+    "resources": {
+      "css": []
+    },
+    "routing": {
+      "config": {},
+      "routes": [
+        {
+          "pattern": ":?query:",
+          "name": "CoursesList",
+          "target": [
+            "CoursesList"
+          ]
+        },
+        {
+          "pattern": "Courses({key}):?query:",
+          "name": "CoursesObjectPage",
+          "target": [
+            "CoursesList",
+            "CoursesObjectPage"
+          ]
+        }
+      ],
+      "targets": {
+        "CoursesList": {
+          "type": "Component",
+          "id": "CoursesList",
+          "name": "sap.fe.templates.ListReport",
+          "options": {
+            "settings": {
+              "contextPath": "/Courses",
+              "variantManagement": "Page",
+              "navigation": {
+                "Courses": {
+                  "detail": {
+                    "route": "CoursesObjectPage"
+                  }
+                }
+              },
+              "controlConfiguration": {
+                "@com.sap.vocabularies.UI.v1.LineItem": {
+                  "tableSettings": {
+                    "type": "GridTable",
+                    "enableExport": true,
+                    "creationMode": {
+                      "name": "CreationDialog",
+                      "creationFields": "Coursename,duration,fees,trainer_ID"
+                    },
+                    "personalization": true,
+                    "selectAll": false,
+                    "widthIncludingColumnHeader": true,
+                    "quickVariantSelection": {
+                      "showCounts": true,
+                      "hideTableTitle": false
+                    },
+                    "selectionMode": "None",
+                    "condensedTableLayout": true
+                  }
+                }
+              },
+              "initialLoad": "Enabled"
+            }
+          }
+        },
+        "CoursesObjectPage": {
+          "type": "Component",
+          "id": "CoursesObjectPage",
+          "name": "sap.fe.templates.ObjectPage",
+          "options": {
+            "settings": {
+              "editableHeaderContent": false,
+              "contextPath": "/Courses",
+              "enableLazyLoading": true,
+              "controlConfiguration": {
+                "Enrollments/@com.sap.vocabularies.UI.v1.LineItem#Enrollments": {
+                  "tableSettings": {
+                    "type": "GridTable",
+                    "enableExport": true,
+                    "quickVariantSelection": {
+                      "showCounts": true
+                    }
+                  }
+                }
+              },
+              "sectionLayout": "Tabs"
+            }
+          }
+        }
+      }
+    }
+  },
+  "sap.fiori": {
+    "registrationIds": [],
+    "archeType": "transactional"
+  },
+  "sap.fe": {
+    "app": {
+      "enableLazyLoading": true
+    }
+  }
+}
