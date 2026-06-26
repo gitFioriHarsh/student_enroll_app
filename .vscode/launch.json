@@ -1,0 +1,26 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Debug CAP: Hybrid (HANA)",
+      "request": "launch",
+      "type": "node",
+      "cwd": "${workspaceFolder}/student_enroll_app",
+      "runtimeExecutable": "npx",
+      "args": [
+        "cds",
+        "watch",
+        "--profile",
+        "hybrid"
+      ],
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen",
+      "skipFiles": [
+        "<node_internals>/**"
+      ],
+      "env": {
+        "NODE_ENV": "development"
+      }
+    }
+  ]
+}
