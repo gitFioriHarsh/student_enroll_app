@@ -143,6 +143,19 @@ resources:
     parameters:
       service: destination
       service-plan: lite
+      config:
+        HTML5Runtime_enabled: true
+        init_data:
+          instance:
+            existing_destinations_policy: update
+            destinations:
+              - Name: srv-api
+                URL: ~{srv-api/srv-url}
+                Authentication: NoAuthentication
+                Type: HTTP
+                ProxyType: Internet
+                HTML5.ForwardAuthToken: true
+                HTML5.DynamicDestination: true
     requires:
       - name: srv-api
 
@@ -151,3 +164,8 @@ resources:
     parameters:
       service: html5-apps-repo
       service-plan: app-host
+  - name: student_enroll_app-html5-runtime
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service: html5-apps-repo
+      service-plan: app-runtime
